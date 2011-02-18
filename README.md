@@ -87,9 +87,9 @@ Authors
 
 Copyright and License
 ---------------------
-(c) 2007 by Toxic Software.
-(c) 2007-2009 by Dave Dribin.
-(c) 2011 by Milo Bird.
-(c) 2011 by David E. Wheeler.
+© 2007 by Toxic Software.<br/>
+© 2007-2009 by Dave Dribin.<br/>
+© 2011 by Milo Bird.<br/>
+© 2011 by David E. Wheeler.
 
 See individual files for licenses.
