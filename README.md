@@ -67,7 +67,7 @@ NSObject+Queue
 
 ### -queueOnMainThread ###
 
-- (id)queueOnMainThread;
+    - (id)queueOnMainThread;
 
 #### Discussion ####
 
