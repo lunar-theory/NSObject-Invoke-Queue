@@ -76,7 +76,7 @@ static NSTimer *staticMainThreadTimer = nil;
     }
 }
 
-- (void)queueSelectorOnMainThread:(SEL)selector withObject:(id)object;
+- (void)queueSelectorOnMainThread:(SEL)selector withObject:(__unsafe_unretained id)object;
 {
     NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[self methodSignatureForSelector:selector]];
     [invocation setTarget:self];

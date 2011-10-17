@@ -99,7 +99,6 @@
 {
     if (_target != inTarget)
 	{
-        [_target autorelease];
         _target = [inTarget retain];
 	}
 }
@@ -113,7 +112,6 @@
 {
     if (_invocation != inInvocation)
 	{
-        [_invocation autorelease];
         _invocation = [inInvocation retain];
 	}
 }
