@@ -65,7 +65,7 @@
 
 + (id)invocationGrabber
 {
-    return([[[self alloc] init] autorelease]);
+    return([[self alloc] init]);
 }
 
 - (id)init
@@ -85,7 +85,6 @@
     [self setTarget:NULL];
     [self setInvocation:NULL];
     //
-    [super dealloc];
 }
 
 #pragma mark -
@@ -99,7 +98,7 @@
 {
     if (_target != inTarget)
 	{
-        _target = [inTarget retain];
+        _target = inTarget;
 	}
 }
 
@@ -112,7 +111,7 @@
 {
     if (_invocation != inInvocation)
 	{
-        _invocation = [inInvocation retain];
+        _invocation = inInvocation;
 	}
 }
 
