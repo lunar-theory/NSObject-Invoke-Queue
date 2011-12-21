@@ -65,7 +65,11 @@
 
 + (id)invocationGrabber
 {
+#if __has_feature(objc_arc)
     return([[self alloc] init]);
+#else
+    return([[[self alloc] init] autorelease]);
+#endif
 }
 
 - (id)init
@@ -85,6 +89,9 @@
     [self setTarget:NULL];
     [self setInvocation:NULL];
     //
+#if !__has_feature(objc_arc)
+    [super dealloc];
+#endif
 }
 
 #pragma mark -
@@ -98,7 +105,12 @@
 {
     if (_target != inTarget)
 	{
+#if __has_feature(objc_arc)
         _target = inTarget;
+#else
+        [_target autorelease];
+        _target = [inTarget retain];
+#endif
 	}
 }
 
@@ -111,8 +123,13 @@
 {
     if (_invocation != inInvocation)
 	{
+#if __has_feature(objc_arc)
         _invocation = inInvocation;
-	}
+#else
+    [_invocation autorelease];
+    _invocation = [inInvocation retain];
+#endif
+}
 }
 
 - (BOOL)forwardInvokesOnMainThread;

@@ -57,6 +57,9 @@ static NSTimer *staticMainThreadTimer = nil;
     [staticMainThreadQueue addObject:invocation];
     if (!staticMainThreadTimer)
         staticMainThreadTimer = [NSTimer scheduledTimerWithTimeInterval:0 target:self selector:@selector(dequeueMainThreadInvocation:) userInfo:nil repeats:YES];
+#if !__has_feature(objc_arc)
+    [staticMainThreadTimer retain];
+#endif
 }
 
 + (void)dequeueMainThreadInvocation:(NSTimer *)timer;
@@ -68,6 +71,10 @@ static NSTimer *staticMainThreadTimer = nil;
     }
     else
     {
+#if !__has_feature(objc_arc)
+        [staticMainThreadQueue release];
+        [staticMainThreadTimer release];
+#endif
         staticMainThreadQueue = nil;
         [staticMainThreadTimer invalidate];
         staticMainThreadTimer = nil;
